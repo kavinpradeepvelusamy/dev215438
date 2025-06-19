@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>POST</http_method>
+        <name>create inc</name>
+        <operation_script><![CDATA[(function process(request, response) {
+    var body = request.body.data;
+
+    var missing = [];
+    var requiredfields = ['urgency', 'category'];
+    var missingfields = [];
+    var creincfun = [];
+    var ermsg = '';
+
+    requiredfields.forEach(function(field) {
+        if (JSUtil.nil(body[field])) {
+            missingfields.push(field);
+        }
+    });
+
+    if (missingfields.length > 0) {
+        var miss = _cus_error('400', "Missing required fields :" + missingfields, missingfields.join(','));
+        // response.setStatus(400);
+        // response.setBody({
+        //     status: "failure",
+        //     message: "Missing required fields :" + missingfields,
+        //     errors: missingfields.join(',')
+        // });
+        return miss;
+    }
+    try {
+        // var grINC = new GlideRecord('incident');
+        // grINC.initialize();
+        // grINC.caller_id = gs.getUserID();
+        // grINC.short_description = body.short_description;
+        // grINC.description = body.description;
+        // grINC.category = body.category;
+        // grINC.urgency = body.urgency;
+        // grINC.impact = body.impact;
+
+        // var id = grINC.insert();
+        var id = createinc(body);
+        var jsonid = JSON.stringify(id);
+        jsonid = JSON.parse(jsonid);
+
+        if (!jsonid[0].inc_sys_id) {
+            ermsg = jsonid[0].err_inc;
+            ermsg = ermsg.replace("Data Policy Exception: \n\t", "");
+            var er = _getError('failure', "Invalid insert", "Invalid insert Error :" + ermsg);
+            return er;
+        }
+
+        //if insert success
+        response.setStatus(201);
+        response.setBody({
+            status: "success",
+            sys_id: jsonid[0].inc_sys_id
+        });
+
+    } catch (err) {
+        gs.info('REST API Error ' + err.toString());
+        response.setError(new sn_ws_err.BadRequestError('Error : ' + err));
+    }
+
+    function createinc(body) {
+        var grINC = new GlideRecord('incident');
+        grINC.initialize();
+        grINC.caller_id = gs.getUserID();
+        grINC.short_description = body.short_description;
+        grINC.description = body.description;
+        grINC.category = body.category;
+        grINC.urgency = body.urgency;
+        grINC.impact = body.impact;
+
+        var funinc = grINC.insert();
+        creincfun.push({
+            inc_sys_id: funinc,
+            err_inc: grINC.getLastErrorMessage()
+        });
+        return creincfun;
+    }
+
+    function _getError(status, message, detail) {
+        var Error = new sn_ws_err.ServiceError();
+        Error.setStatus(status);
+        Error.setMessage(message);
+        Error.setDetail(detail);
+        return Error;
+    }
+
+    function _cus_error(status, message, detail) {
+        var myError = new sn_ws_err.ServiceError();
+        myError.setStatus(status);
+        myError.setMessage(message);
+        myError.setDetail(detail);
+        return myError;
+    }
+
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_578698_customcas/create_inc/_createinc</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/_createinc</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-19 11:24:53</sys_created_on>
+        <sys_id>45c349e4c35aaa107cc1304d0501311a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>create inc</sys_name>
+        <sys_package display_value="customcase" source="x_578698_customcas">a8f0896cc396aa107cc1304d0501317f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="customcase">a8f0896cc396aa107cc1304d0501317f</sys_scope>
+        <sys_update_name>sys_ws_operation_45c349e4c35aaa107cc1304d0501311a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-19 11:24:53</sys_updated_on>
+        <web_service_definition display_value="Create INC">d1b3c5e4c35aaa107cc1304d0501314b</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
