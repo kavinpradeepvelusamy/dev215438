@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_action_param_map">
+    <sys_sg_action_param_map action="INSERT_OR_UPDATE">
+        <button display_value="Edit Button (Incident)">3a418de0c35aaa107cc1304d050131af</button>
+        <item_parameter display_value="Incident location">fe418de0c35aaa107cc1304d050131ad</item_parameter>
+        <sys_class_name>sys_sg_action_param_map</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-19 11:13:30</sys_created_on>
+        <sys_id>be418de0c35aaa107cc1304d050131b6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>fe418de0c35aaa107cc1304d050131ad</sys_name>
+        <sys_package display_value="customcase" source="x_578698_customcas">a8f0896cc396aa107cc1304d0501317f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="customcase">a8f0896cc396aa107cc1304d0501317f</sys_scope>
+        <sys_update_name>sys_sg_action_param_map_be418de0c35aaa107cc1304d050131b6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-19 11:13:30</sys_updated_on>
+        <ui_parameter display_value="Location">b2418de0c35aaa107cc1304d050131b3</ui_parameter>
+    </sys_sg_action_param_map>
+</record_update>
