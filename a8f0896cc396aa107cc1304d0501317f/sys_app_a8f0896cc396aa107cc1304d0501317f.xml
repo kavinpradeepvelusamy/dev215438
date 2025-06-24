@@ -32,11 +32,12 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-06-19 11:11:58</sys_created_on>
         <sys_id>a8f0896cc396aa107cc1304d0501317f</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-23 13:49:40</sys_updated_on>
+        <sys_updated_on>2025-06-24 07:47:43</sys_updated_on>
         <template/>
         <trackable>true</trackable>
+        <u_cicd>Commit To App Repo</u_cicd>
         <uninstall_blocked>false</uninstall_blocked>
         <user_role/>
         <vendor/>
