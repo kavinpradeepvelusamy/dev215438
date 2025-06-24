@@ -35,7 +35,7 @@
 request.setEndpoint('https://dev215438.service-now.com/api/sn_devstudio/v1/vcs/apps/a8f0896cc396aa107cc1304d0501317f/repos/dev215438/commits');
 request.setHttpMethod('POST');
 
-gs.info("@@@ Initiated :");
+gs.info("1@@@ Initiated :");
 
 //Eg. UserName="admin", Password="admin" for this code sample.
 var user = 'admin';
@@ -45,7 +45,7 @@ request.setBasicAuth(user,password);
 request.setRequestHeader("Accept","application/json");
 
 var response = request.execute();
-gs.info("@@@ Response :"+response.getBody());
+gs.info("1@@@ Response :"+response.getBody());
 
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -54,7 +54,7 @@ gs.info("@@@ Response :"+response.getBody());
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>80d0c686c356a2507cc1304d0501314a</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Commit Changes To APP Repo</sys_name>
         <sys_overrides/>
         <sys_package display_value="customcase" source="x_578698_customcas">a8f0896cc396aa107cc1304d0501317f</sys_package>
@@ -62,9 +62,9 @@ gs.info("@@@ Response :"+response.getBody());
         <sys_scope display_value="customcase">a8f0896cc396aa107cc1304d0501317f</sys_scope>
         <sys_update_name>sys_script_80d0c686c356a2507cc1304d0501314a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-24 07:43:23</sys_updated_on>
+        <sys_updated_on>2025-06-24 07:51:35</sys_updated_on>
         <template/>
-        <when>after</when>
+        <when>async_always</when>
     </sys_script>
     <sys_translated_text action="delete_multiple" query="documentkey=80d0c686c356a2507cc1304d0501314a"/>
 </record_update>
